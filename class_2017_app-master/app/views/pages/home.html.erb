@@ -1,4 +1,3 @@
-
 <%= render 'pages/nav' %>
 
 <h1 id="header">Welcome to Lehi's Random Lunch Generator</h1>
@@ -7,13 +6,14 @@
 
   <div class="button-container">
     
-          <%= link_to "Find me lunch!", root_path, class: "home-button btn-warning" %>
-          <%= link_to "Submit a Restaurant", root_path, class: "home-button btn-dark" %>
-          <%= link_to "Add a Restaurant", root_path, class: "home-button btn-primary" %>
+    <%= link_to "Find me lunch!", @random_rest, class: "home-button btn-primary" %>
 
+    <% if logged_in?(:user) %>
+        <%= link_to "Add a Restaurant", new_restaurant_path, class: "home-button btn-primary" %>
+    <% else %>
+        <%= link_to "Login to add a Restaurant", new_user_session_path, class: "logged-out home-button btn-primary" %>
+
+    <% end %>
   </div>
-</div>
-
-
 </div>
 
